@@ -1,16 +1,18 @@
-def divide_numbers(x, y):
+def process_data(data):
+    if not data:
+        raise ValueError("Data list cannot be empty.")
     try:
-        result = x / y
-    except TypeError:
-        print("Please enter only numbers.")
+        result = data[0] / data[-1]
     except ZeroDivisionError:
-        print("Cannot divide by zero.")
+        print("Cannot divide by zero in the data.")
+    except TypeError:
+        print("Data should contain only numbers.")
+    except IndexError:
+        print("Data list is too short.")
     else:
-        print(f"The result is {result}")
+        print(f"Result: {result}")
     finally:
-        print("Operation attempted.\n")
+        print("Data processing attempted.")
 
-# Call the function to test the error handling
-divide_numbers(6, 2)
-divide_numbers(6, 0)
-divide_numbers(6, 'o')
+# Example usage
+result = process_data([1, 2, 0])
